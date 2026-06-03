@@ -1,112 +1,387 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>안녕하세요 — 소개 페이지</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card: rgba(255, 255, 255, 0.06);
-      --accent: #6366f1;
-      --accent-hover: #818cf8;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SEO BO GEUM — Portfolio</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#131313;
+    --bg-2:#1b1b1b;
+    --card:#1e1e1e;
+    --text:#f4f2ef;
+    --muted:#8d8a86;
+    --accent:#ff2b2b;
+    --line:rgba(255,255,255,.10);
+    --line-2:rgba(255,255,255,.06);
+    --sans:'Pretendard',system-ui,sans-serif;
+    --mono:'Space Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--text);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden;
+  }
+  ::selection{background:var(--accent);color:#fff}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 28px;backdrop-filter:blur(12px);
+    background:rgba(19,19,19,.6);border-bottom:1px solid var(--line-2);
+  }
+  nav .brand{font-weight:600;letter-spacing:.18em;font-size:13px}
+  nav .brand b{color:var(--accent)}
+  nav .links{display:flex;gap:26px;font-size:13px;font-family:var(--mono)}
+  nav .links a{color:var(--muted);transition:color .25s}
+  nav .links a:hover{color:var(--text)}
+  @media(max-width:640px){nav .links{display:none}}
 
-    body {
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard",
-        "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at 20% 20%, #1e293b 0%, var(--bg) 55%),
-        radial-gradient(circle at 80% 80%, #312e81 0%, transparent 50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-    }
+  /* HERO */
+  header{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    overflow:hidden;
+  }
+  .orbit{position:absolute;inset:0;pointer-events:none;opacity:.9}
+  .hero-grad{
+    position:absolute;inset:0;
+    background:radial-gradient(120% 80% at 80% 10%,rgba(255,43,43,.10),transparent 55%);
+  }
+  .hero-content{position:relative;z-index:2}
+  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.2em;color:var(--muted);margin-bottom:30px}
+  .dot{display:inline-block;width:13px;height:13px;border-radius:50%;background:var(--accent);margin-bottom:22px;box-shadow:0 0 24px rgba(255,43,43,.8)}
+  h1{font-size:clamp(38px,7vw,82px);font-weight:700;line-height:1.08;letter-spacing:-.02em}
+  h1 .thin{font-weight:300;color:var(--muted)}
+  .hero-sub{margin-top:26px;max-width:440px;color:var(--muted);font-size:15px}
+  .tags{margin-top:38px;display:flex;flex-wrap:wrap;gap:10px}
+  .tags span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);border:1px solid var(--line);padding:7px 13px;border-radius:40px}
+  .scroll-cue{position:absolute;bottom:34px;left:28px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--muted);z-index:2}
 
-    .card {
-      max-width: 540px;
-      width: 100%;
-      text-align: center;
-      padding: 56px 40px;
-      background: var(--card);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
-      animation: rise 0.7s ease both;
-    }
+  /* SECTION HEAD */
+  section{padding:96px 0;border-top:1px solid var(--line-2)}
+  .sec-label{font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--accent);margin-bottom:14px}
+  .sec-title{font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+  .sec-desc{color:var(--muted);font-size:15px;max-width:520px}
 
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+  /* FILTER TABS */
+  .tabs{display:flex;flex-wrap:wrap;gap:10px;margin:40px 0 36px}
+  .tab{
+    font-family:var(--mono);font-size:13px;letter-spacing:.04em;
+    background:none;border:1px solid var(--line);color:var(--muted);
+    padding:9px 18px;border-radius:40px;cursor:pointer;transition:.22s;
+  }
+  .tab:hover{color:var(--text);border-color:rgba(255,255,255,.3)}
+  .tab.active{background:var(--accent);border-color:var(--accent);color:#fff}
 
-    .badge {
-      display: inline-block;
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--accent-hover);
-      background: rgba(99, 102, 241, 0.12);
-      padding: 6px 14px;
-      border-radius: 999px;
-      margin-bottom: 24px;
-    }
+  /* GRID */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  .card{
+    background:var(--card);border:1px solid var(--line-2);border-radius:16px;
+    overflow:hidden;cursor:pointer;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s;
+    display:flex;flex-direction:column;
+  }
+  .card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.22)}
+  .thumb{aspect-ratio:4/3;overflow:hidden;background:#222;position:relative}
+  .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .thumb img{transform:scale(1.06)}
+  .card-body{padding:18px 18px 20px}
+  .card-cat{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--accent)}
+  .card-title{font-size:17px;font-weight:600;margin-top:6px}
+  .card-year{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:8px}
 
-    h1 {
-      font-size: clamp(28px, 6vw, 44px);
-      line-height: 1.2;
-      margin-bottom: 18px;
-      background: linear-gradient(90deg, #f1f5f9, #a5b4fc);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:280px 1fr;gap:60px;align-items:start}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:36px}}
+  .pf{width:150px;height:150px;border-radius:50%;object-fit:cover;border:1px solid var(--line);margin-bottom:24px}
+  .about-name{font-size:26px;font-weight:700}
+  .about-meta{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:10px;line-height:1.9}
+  .about-text{color:#cfccc7;font-size:15.5px;max-width:620px}
+  .about-text p{margin-bottom:18px}
+  .about-text .hl{color:var(--text);font-weight:600}
+  .exp{margin-top:34px;display:grid;gap:0}
+  .exp-row{display:flex;justify-content:space-between;gap:20px;padding:15px 0;border-top:1px solid var(--line-2);font-size:14px}
+  .exp-row span:last-child{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+  .tools{margin-top:30px;display:flex;flex-wrap:wrap;gap:9px}
+  .tools span{font-family:var(--mono);font-size:11px;color:var(--muted);border:1px solid var(--line);padding:6px 12px;border-radius:6px}
 
-    p {
-      font-size: 17px;
-      line-height: 1.7;
-      color: var(--muted);
-      margin-bottom: 36px;
-    }
+  /* CONTACT */
+  .contact{text-align:center;padding:110px 0}
+  .contact .big{font-size:clamp(30px,6vw,64px);font-weight:700;letter-spacing:-.02em}
+  .contact .mail{display:inline-block;margin-top:24px;font-size:18px;color:var(--accent);border-bottom:1px solid transparent;transition:.25s}
+  .contact .mail:hover{border-color:var(--accent)}
+  .contact .row{margin-top:28px;display:flex;gap:28px;justify-content:center;font-family:var(--mono);font-size:13px;color:var(--muted);flex-wrap:wrap}
+  .contact .row a:hover{color:var(--text)}
+  footer{border-top:1px solid var(--line-2);padding:26px 0;font-family:var(--mono);font-size:11px;color:var(--muted);display:flex;justify-content:space-between;letter-spacing:.1em}
 
-    .btn {
-      display: inline-block;
-      font-size: 16px;
-      font-weight: 600;
-      color: #fff;
-      text-decoration: none;
-      padding: 14px 36px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-hover));
-      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
+  /* MODAL */
+  .modal{
+    position:fixed;inset:0;z-index:100;display:none;
+    background:rgba(8,8,8,.82);backdrop-filter:blur(8px);
+    align-items:center;justify-content:center;padding:24px;
+  }
+  .modal.open{display:flex;animation:fade .3s}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal-box{
+    background:var(--bg-2);border:1px solid var(--line);border-radius:18px;
+    max-width:880px;width:100%;max-height:88vh;overflow-y:auto;position:relative;
+    animation:pop .35s cubic-bezier(.2,.7,.2,1);
+  }
+  @keyframes pop{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}
+  .modal-box::-webkit-scrollbar{width:8px}
+  .modal-box::-webkit-scrollbar-thumb{background:#333;border-radius:8px}
+  .m-close{
+    position:absolute;top:14px;right:14px;z-index:3;width:38px;height:38px;border-radius:50%;
+    background:rgba(0,0,0,.5);border:1px solid var(--line);color:#fff;font-size:18px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:.2s;
+  }
+  .m-close:hover{background:var(--accent);border-color:var(--accent)}
+  .m-img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#222;border-radius:18px 18px 0 0}
+  .m-body{padding:32px 36px 40px}
+  @media(max-width:560px){.m-body{padding:24px 22px 32px}}
+  .m-cat{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--accent)}
+  .m-title{font-size:28px;font-weight:700;margin:8px 0 18px}
+  .m-desc{color:#cfccc7;font-size:15.5px;margin-bottom:26px}
+  .m-info{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;border-top:1px solid var(--line-2);padding-top:22px}
+  @media(max-width:560px){.m-info{grid-template-columns:1fr}}
+  .m-info .k{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--muted);margin-bottom:3px}
+  .m-info .v{font-size:14px}
+  .m-link{
+    display:inline-flex;align-items:center;gap:8px;margin-top:28px;
+    background:var(--accent);color:#fff;font-size:14px;font-weight:600;
+    padding:12px 22px;border-radius:40px;transition:.25s;
+  }
+  .m-link:hover{transform:translateX(4px)}
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(99, 102, 241, 0.55);
-    }
-
-    .btn:active { transform: translateY(0); }
-  </style>
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+  .reveal.in{opacity:1;transform:none}
+</style>
 </head>
 <body>
-  <main class="card">
-    <span class="badge">Welcome</span>
-    <h1>안녕하세요, 반갑습니다</h1>
-    <p>
-      작고 깔끔한 한 페이지 소개입니다. 여기에 나를 소개하는
-      짧은 글을 적어보세요. 무엇을 하고, 무엇을 좋아하며,
-      어떤 이야기를 나누고 싶은지 한두 문장이면 충분합니다.
-    </p>
-    <a class="btn" href="#">더 알아보기</a>
-  </main>
+
+<nav>
+  <div class="brand">SEO BO GEUM <b>·</b> PORTFOLIO</div>
+  <div class="links">
+    <a href="#work">WORK</a>
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header>
+  <div class="hero-grad"></div>
+  <svg class="orbit" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    <ellipse cx="980" cy="420" rx="320" ry="430" fill="none" stroke="var(--accent)" stroke-width="1.1" transform="rotate(28 980 420)" opacity=".85"/>
+    <path d="M-50 760 C 350 560, 760 560, 1180 300 C 1360 190, 1480 130, 1560 90" fill="none" stroke="var(--accent)" stroke-width="1.1" opacity=".7"/>
+  </svg>
+  <div class="wrap hero-content">
+    <div class="eyebrow">PORTFOLIO · 2018 — 2025</div>
+    <div class="dot"></div>
+    <h1>성장하는 디자이너<br><span class="thin">서보금</span>입니다.</h1>
+    <p class="hero-sub">누구에게나 영감을 주는 결과물을 만드는 것을 목표로,
+      브랜딩부터 UI/UX·에디토리얼까지 폭넓게 작업하는 디자이너입니다.</p>
+    <div class="tags">
+      <span>BRANDING</span><span>UI / UX</span><span>EDITORIAL</span><span>GRAPHIC</span>
+    </div>
+  </div>
+  <div class="scroll-cue">SCROLL ↓</div>
+</header>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-label">SELECTED WORK</div>
+    <h2 class="sec-title">프로젝트</h2>
+    <p class="sec-desc">카테고리를 눌러 보고 싶은 작업을 골라보세요. 카드를 클릭하면 자세한 내용이 열립니다.</p>
+
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-cat="all">전체</button>
+      <button class="tab" data-cat="브랜딩">브랜딩</button>
+      <button class="tab" data-cat="웹">웹</button>
+      <button class="tab" data-cat="앱">앱</button>
+      <button class="tab" data-cat="에디토리얼">에디토리얼</button>
+      <button class="tab" data-cat="기타">기타</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <img class="pf" src="img/profile.jpg" alt="서보금 프로필" />
+      <div class="about-name">서보금</div>
+      <div class="about-meta">
+        1997. 01. 25<br>
+        Daegu, KR<br>
+        seobogeum97@gmail.com
+      </div>
+      <div class="tools">
+        <span>Figma</span><span>Photoshop</span><span>Illustrator</span><span>InDesign</span><span>Zeplin</span><span>HTML / CSS</span>
+      </div>
+    </div>
+    <div>
+      <div class="sec-label">ABOUT</div>
+      <div class="about-text">
+        <p>디자인을 잘 하는 것이 여전히 쉽지 않은 일이라는 것을 느끼지만, 그럼에도 계속 디자이너로서 성장하는 이유는 <span class="hl">힘든 과정 속에서 조금씩 성장하고 있다고 확신하기 때문</span>입니다.</p>
+        <p>디자이너로서 저의 목표는 <span class="hl">누구에게나 영감을 주고 싶은 결과물을 만드는 것</span>입니다. 브랜딩, UI/UX, 에디토리얼, 그래픽까지 폭넓게 다루며 기획부터 디자인, 때로는 퍼블리싱·배포까지 직접 경험해 왔습니다.</p>
+      </div>
+      <div class="exp">
+        <div class="exp-row"><span>퀘스 홍보 디자인팀 · 팀원</span><span>2020.03 — 2023.12</span></div>
+        <div class="exp-row"><span>SBS아카데미 웹디자이너 과정 수료</span><span>2019.06 — 2019.12</span></div>
+        <div class="exp-row"><span>이레디자인시스템 옥외광고 홍보 디자이너</span><span>2018.03 — 2019.05</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact wrap" id="contact">
+  <div class="sec-label" style="text-align:center">GET IN TOUCH</div>
+  <div class="big">함께 일해요.</div>
+  <a class="mail" href="mailto:seobogeum97@gmail.com">seobogeum97@gmail.com</a>
+  <div class="row">
+    <a href="tel:01088389241">010-8838-9241</a>
+    <a href="https://instagram.com/bgu.ma" target="_blank" rel="noopener">Instagram @bgu.ma</a>
+  </div>
+</div>
+
+<footer class="wrap">
+  <span>© 2025 SEO BO GEUM</span>
+  <span>DESIGNED &amp; BUILT BY BGU</span>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="m-close" id="mClose">✕</button>
+    <img class="m-img" id="mImg" src="" alt="" />
+    <div class="m-body">
+      <div class="m-cat" id="mCat"></div>
+      <div class="m-title" id="mTitle"></div>
+      <div class="m-desc" id="mDesc"></div>
+      <div class="m-info">
+        <div><div class="k">ROLE</div><div class="v" id="mRole"></div></div>
+        <div><div class="k">TOOLS</div><div class="v" id="mTools"></div></div>
+        <div><div class="k">PERIOD</div><div class="v" id="mPeriod"></div></div>
+        <div><div class="k">CONTRIBUTION</div><div class="v" id="mContrib"></div></div>
+      </div>
+      <a class="m-link" id="mLink" href="#" target="_blank" rel="noopener">라이브 사이트 보기 →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const projects = [
+  {id:'pickme',cat:'브랜딩',title:'온라인 투표 서비스 픽미',year:'2021—2023',
+   desc:'코로나19로 대면 투표가 어려운 상황을 해결하기 위해 만들어진 통합 의사결정 플랫폼입니다. 공식 홈페이지·관리자·유권자 페이지를 디자인하며, 누적 투표 유권자 100만 명을 넘는 서비스로 성장하는 과정을 함께했습니다.',
+   role:'Logo · UI/UX · Editorial',tools:'Figma · Illustrator · Photoshop',period:'2021.11 — 2023.11',contrib:'10인 팀 (디자인 100%)',link:'https://ohpick.me/'},
+  {id:'laplaya',cat:'브랜딩',title:'소녀의 바다, 라플라야',year:'2021',
+   desc:'어린 시절의 추억에서 영감을 받아 여성 타겟으로 만든 텀블벅 펀딩 브랜드입니다. 청량한 바다 컨셉과 사랑스러운 캐릭터를 중심으로 로고·캐릭터·굿즈·제품 패키지까지 전개했습니다.',
+   role:'Logo · Character · Editorial',tools:'Illustrator · Photoshop',period:'2021.09 — 2021.12',contrib:'2인 팀 (디자인 100%)',link:''},
+  {id:'wefresh',cat:'앱',title:'분리수거 앱 리프레시',year:'2019',
+   desc:'올바른 분리배출 방법을 익히도록 돕는 개인 프로젝트입니다. 사용자 인터뷰·리서치를 통해 인사이트를 도출하고, 분리배출 인증으로 성취감을 주는 흐름을 설계했습니다.',
+   role:'Logo · UI/UX',tools:'Illustrator · Photoshop',period:'2019.08 — 2019.12',contrib:'1인 개인 (100%)',link:''},
+  {id:'rainbird',cat:'앱',title:'재난 알림 앱 레인버드지오',year:'2023',
+   desc:'인공위성 데이터 기반으로 아시아-태평양 지역의 기후 리스크를 실시간 알려주는 앱의 리디자인입니다. 외부 기획자·iOS/Android 개발자와 협업하며 더 나은 UX를 찾아간 프로젝트입니다.',
+   role:'UI/UX',tools:'Figma · Zeplin · Illustrator',period:'2023.06 — 2023.08',contrib:'4인 팀 (디자인 100%)',link:''},
+  {id:'morningmong',cat:'앱',title:'알람 앱 모닝몽',year:'2018',
+   desc:'알람 소리만 울리는 기존 앱과 달리, 간단한 게임을 통과해야 알람이 멈추는 알람 앱입니다. ‘모닝몽’ 네이밍에 맞춰 귀여운 원숭이 캐릭터를 직접 만들어 적용했습니다.',
+   role:'Logo · Character · UI/UX',tools:'Illustrator · Photoshop',period:'2018.08 — 2018.11',contrib:'1인 개인 (100%)',link:''},
+  {id:'s-stay',cat:'웹',title:'‘S’사 고급 숙소 예약 플랫폼',year:'2023',
+   desc:'고급스러운 무드를 핵심으로 한 숙박 예약 플랫폼입니다. 블랙 메인 컬러와 라운딩 레이아웃으로 차별화하고, 공식 홈페이지·숙박업소 관리자·시스템 관리자 3개 페이지를 개발팀과 조율하며 제작했습니다.',
+   role:'UI/UX',tools:'Figma · Illustrator',period:'2023.09 — 2023.11',contrib:'6인 팀 (디자인 100%)',link:''},
+  {id:'natuur',cat:'웹',title:'아이스크림 홈페이지 리디자인 나뚜루',year:'2020',
+   desc:'프리미엄 아이스크림 브랜드 나뚜루의 홈페이지 리디자인 개인 프로젝트입니다. 기획·디자인뿐 아니라 HTML/CSS로 직접 퍼블리싱까지 구현한 경험이 있습니다.',
+   role:'UI/UX · Publishing',tools:'Figma · Illustrator · VS Code',period:'2020.09 — 2020.12',contrib:'1인 개인 (100%)',link:''},
+  {id:'knu-ebook',cat:'에디토리얼',title:'경북대학교 신입생 안내 전자책',year:'2020—2023',
+   desc:'매년 초 진행한 경북대학교 신입생용 150p 이상 전자 안내 책자입니다. 일러스트·포토샵 작업부터 인디자인 편집, 전자책 변환까지 전 과정을 도맡았습니다.',
+   role:'Editorial',tools:'InDesign · Illustrator',period:'2020.02 — 2023.02',contrib:'1인 (디자인 100%)',link:'https://knupia2.knu.ac.kr/guidebook/#p=1'},
+  {id:'silverbook',cat:'에디토리얼',title:'어르신을 위한 책 월간실버',year:'2021—2022',
+   desc:'집에만 계시던 아픈 외할아버지를 위해 시작한 텀블벅 펀딩 프로젝트입니다. 뇌를 자극하는 놀이로 어르신과 함께할 수 있는 놀이책을 기획·디자인했습니다.',
+   role:'Logo · Character · Editorial',tools:'Illustrator · Photoshop · InDesign',period:'2021.12 — 2022.01',contrib:'2인 팀 (디자인 100%)',link:'https://www.tumblbug.com/silverbook'},
+  {id:'poster',cat:'에디토리얼',title:'장애인종합생활체육대회 포스터',year:'2018',
+   desc:'대구장애인체육회 주최 행사의 포스터·대형 현수막·초대장·팜플렛을 제작했습니다. 행사의 목적이 또렷이 드러나도록 댄스 스포츠를 메인 비주얼로 선정했습니다.',
+   role:'Editorial',tools:'Illustrator · Photoshop · InDesign',period:'2018.08 — 2018.09',contrib:'1인 (디자인 100%)',link:''},
+  {id:'mural',cat:'기타',title:'벽화 공모전 특선 · 대구 무형문화재',year:'2017',
+   desc:'고산농악과 판소리 춘향전을 일러스트로 표현해 무형문화재의 이야기를 전한 벽화 공모전 출품작으로, 특선을 수상했습니다.',
+   role:'Editorial · Illustration',tools:'Illustrator · Photoshop',period:'2017.07 — 2017.08',contrib:'2인 팀 (디자인 100%)',link:''},
+  {id:'lotte',cat:'기타',title:'롯데백화점 혼자볼게요 캐릭터',year:'2021',
+   desc:'혼자 쇼핑하는 ‘혼쇼’ 고객을 위한 굿즈(스티커·가방 걸이) 캐릭터를 의뢰받아 제작했습니다. 귀여운 단발머리 소녀로 친근감을 부여했습니다.',
+   role:'Character Design',tools:'Illustrator',period:'2021.10',contrib:'1인 (디자인 100%)',link:''},
+  {id:'album',cat:'기타',title:'앨범 커버 리디자인 비행운',year:'2018',
+   desc:'몽환적인 멜로디와 어릴 적 꿈이던 우주 비행사를 모티프로, 포토샵 콜라주 기법을 활용해 노래 주제가 연상되는 앨범 커버를 제작했습니다.',
+   role:'Graphic Design',tools:'Illustrator · Photoshop',period:'2018.10',contrib:'1인 (디자인 100%)',link:''},
+];
+
+const grid = document.getElementById('grid');
+function render(cat){
+  grid.innerHTML='';
+  projects.filter(p=>cat==='all'||p.cat===cat).forEach((p,i)=>{
+    const c=document.createElement('div');
+    c.className='card reveal';
+    c.style.transitionDelay=(i*40)+'ms';
+    c.innerHTML=`
+      <div class="thumb"><img src="img/${p.id}.jpg" alt="${p.title}" loading="lazy"></div>
+      <div class="card-body">
+        <div class="card-cat">${p.cat.toUpperCase()}</div>
+        <div class="card-title">${p.title}</div>
+        <div class="card-year">${p.year}</div>
+      </div>`;
+    c.onclick=()=>openModal(p);
+    grid.appendChild(c);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>c.classList.add('in')));
+  });
+}
+render('all');
+
+document.querySelectorAll('.tab').forEach(t=>{
+  t.onclick=()=>{
+    document.querySelector('.tab.active').classList.remove('active');
+    t.classList.add('active');
+    render(t.dataset.cat);
+  };
+});
+
+// modal
+const modal=document.getElementById('modal');
+function openModal(p){
+  mImg.src='img/'+p.id+'.jpg'; mImg.alt=p.title;
+  mCat.textContent=p.cat.toUpperCase();
+  mTitle.textContent=p.title;
+  mDesc.textContent=p.desc;
+  mRole.textContent=p.role;
+  mTools.textContent=p.tools;
+  mPeriod.textContent=p.period;
+  mContrib.textContent=p.contrib;
+  const link=document.getElementById('mLink');
+  if(p.link){link.style.display='inline-flex';link.href=p.link;}
+  else{link.style.display='none';}
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
+document.getElementById('mClose').onclick=closeModal;
+modal.onclick=e=>{if(e.target===modal)closeModal();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.12});
+document.querySelectorAll('section .sec-label,.sec-title,.sec-desc,.about-grid').forEach(el=>{el.classList.add('reveal');io.observe(el);});
+</script>
 </body>
 </html>
