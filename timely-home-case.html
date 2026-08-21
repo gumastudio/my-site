@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>홈은 시작하는 곳이다 — Timely AI 홈 개편 | SEO BO GEUM</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBFBFD;
+  --ink:#141419;
+  --ink-2:#5C5C68;
+  --ink-3:#9A9AA6;
+  --line:#E7E7EE;
+  --accent:#5E0AFF;
+  --accent-soft:#F1EAFF;
+  --stale:#B9BCC7;
+  --maxw:940px;
+  --pad:clamp(20px,5vw,40px);
+  --sans:"Pretendard",-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);background:var(--paper);color:var(--ink);
+  line-height:1.75;-webkit-font-smoothing:antialiased;
+  font-feature-settings:"ss01";
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+/* ── utility type ── */
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;
+}
+.lede{font-size:clamp(16px,1.9vw,19px);color:var(--ink-2);line-height:1.85}
+p+p{margin-top:1.1em}
+strong{font-weight:700;color:var(--ink)}
+
+/* ── back link ── */
+.topbar{padding:28px 0 0}
+.back{
+  font-family:var(--mono);font-size:12px;color:var(--ink-3);text-decoration:none;
+  letter-spacing:.04em;transition:color .18s ease;
+}
+.back:hover,.back:focus-visible{color:var(--accent)}
+
+/* ── hero ── */
+.hero{padding:clamp(56px,9vw,110px) 0 clamp(40px,6vw,64px)}
+.hero h1{
+  font-size:clamp(30px,5.6vw,58px);font-weight:800;line-height:1.22;
+  letter-spacing:-.035em;margin:22px 0 24px;max-width:16ch;
+}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lede{max-width:52ch}
+
+/* ── meta strip ── */
+.meta{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:22px 0;margin-top:clamp(36px,5vw,52px);
+}
+.meta dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.meta dd{font-size:14px;font-weight:600;line-height:1.5}
+
+/* ── sections ── */
+section{padding:clamp(52px,8vw,92px) 0}
+.sec-head{margin-bottom:clamp(24px,4vw,38px)}
+.sec-head h2{
+  font-size:clamp(21px,3vw,30px);font-weight:750;letter-spacing:-.025em;
+  line-height:1.4;margin-top:14px;max-width:24ch;
+}
+.body-col{max-width:60ch}
+
+/* ── signature: 화면 구성 비교 ── */
+.stackwrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,34px);
+  margin:clamp(32px,5vw,52px) 0 0;align-items:start;
+}
+.stackcol h3{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;margin-bottom:12px;
+}
+.stack{display:flex;flex-direction:column;gap:4px}
+.band{
+  border-radius:5px;padding:11px 13px;font-size:12.5px;font-weight:600;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;line-height:1.3;
+}
+.band span{font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.06em;opacity:.75}
+.band.input{background:var(--accent);color:#fff}
+.band.noise{background:#EFEFF4;color:var(--stale)}
+.band.tall{padding-top:26px;padding-bottom:26px}
+.band.taller{padding-top:44px;padding-bottom:44px}
+.band.ghost{
+  border:1px dashed var(--line);color:var(--ink-3);background:transparent;
+  font-weight:500;justify-content:center;
+}
+.stack-note{font-size:12.5px;color:var(--ink-3);margin-top:12px;line-height:1.65}
+
+/* ── figure slots ── */
+figure{margin:clamp(28px,4vw,44px) 0 0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2vw,20px)}
+.slot{
+  border:1px dashed var(--line);border-radius:8px;background:#fff;
+  aspect-ratio:16/11;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;text-align:center;padding:16px;
+}
+.slot .tag{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.slot .fname{font-family:var(--mono);font-size:11px;color:var(--stale);word-break:break-all}
+.slot img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.pair img{width:100%;aspect-ratio:16/11;object-fit:cover;border-radius:8px}
+figcaption{
+  font-size:12.5px;color:var(--ink-3);margin-top:12px;line-height:1.7;
+  padding-left:11px;border-left:2px solid var(--line);
+}
+
+/* ── decisions ── */
+.decision{border-top:1px solid var(--line);padding:clamp(30px,4vw,44px) 0}
+.decision:first-of-type{border-top:none;padding-top:0}
+.d-num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.14em;font-weight:500}
+.decision h3{font-size:clamp(17px,2.2vw,22px);font-weight:700;letter-spacing:-.02em;margin:10px 0 14px;line-height:1.45}
+.decision .body-col{color:var(--ink-2);font-size:15.5px}
+
+/* ── pull ── */
+.pull{
+  background:var(--accent-soft);border-radius:12px;
+  padding:clamp(26px,4vw,40px);margin:clamp(32px,5vw,48px) 0 0;
+}
+.pull .eyebrow{color:var(--accent)}
+.pull p{font-size:clamp(16px,2vw,19px);font-weight:600;letter-spacing:-.015em;line-height:1.7;margin-top:14px;max-width:40ch}
+.pull .sub{font-size:14px;font-weight:400;color:var(--ink-2);margin-top:14px;max-width:52ch}
+
+/* ── outcome list ── */
+.outcome{list-style:none;margin-top:8px}
+.outcome li{
+  padding:16px 0;border-bottom:1px solid var(--line);
+  display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;
+}
+.outcome li::before{
+  content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);
+  display:block;transform:translateY(-3px);
+}
+.outcome p{font-size:15px;color:var(--ink-2)}
+.outcome b{color:var(--ink);font-weight:650}
+
+/* ── closing ── */
+.closing{border-top:1px solid var(--line);padding-top:clamp(40px,6vw,64px);padding-bottom:clamp(64px,9vw,110px)}
+.closing .body-col{color:var(--ink-2)}
+.closing h2{font-size:clamp(19px,2.6vw,26px);font-weight:750;letter-spacing:-.02em;margin-bottom:18px}
+
+footer{border-top:1px solid var(--line);padding:26px 0 60px}
+footer p{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.05em}
+
+@media (max-width:720px){
+  .meta{grid-template-columns:1fr 1fr;gap:18px 14px}
+  .pair{grid-template-columns:1fr}
+  .stackwrap{grid-template-columns:1fr;gap:26px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap topbar">
+  <a class="back" href="../index.html">← Back to work</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="wrap hero">
+  <p class="eyebrow">Case · Timely AI</p>
+  <h1>홈은 소개하는 곳이 아니라, <em>시작하는 곳</em>이다</h1>
+  <p class="lede">
+    배너와 콘텐츠로 채워져 있던 홈 화면을, 사용자가 곧바로 작업을 시작하는 화면으로 재설계했습니다.
+  </p>
+
+  <dl class="meta">
+    <div><dt>Role</dt><dd>프로덕트 디자인 단독</dd></div>
+    <div><dt>Period</dt><dd>2025<!-- ← 실제 기간으로 수정 --></dd></div>
+    <div><dt>Tool</dt><dd>Figma</dd></div>
+    <div><dt>Scope</dt><dd>홈 · 채팅 · 내비게이션</dd></div>
+  </dl>
+</header>
+
+<!-- ═══════════ 맥락 ═══════════ -->
+<section class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Context</p>
+    <h2>여러 언어모델을 한 화면에서 쓰는 생성형 AI 플랫폼</h2>
+  </div>
+  <div class="body-col">
+    <p class="lede">
+      타임리AI는 프롬프트, 이미지·영상 생성, 문서 변환 같은 업무용 AI 기능을 하나의 플랫폼에서 제공합니다.
+      서울특별시, 한국석유공사, 경기도서관, 대구공공시설관리공단 등
+      <strong>전국 지자체·공공기관·대학에 도입</strong>되어 운영되고 있습니다.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ 문제 ═══════════ -->
+<section class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Problem</p>
+    <h2>입력창은 있었지만, 화면의 무게는 다른 곳에 있었다</h2>
+  </div>
+
+  <div class="body-col">
+    <p class="lede">
+      사용자는 이미 대화형 AI의 사용 관습을 익힌 상태로 들어옵니다.
+      화면을 열면 입력창이 있고 거기서 대화가 시작된다는 기대를 가지고요.
+    </p>
+    <p class="lede">
+      기존 홈에도 입력창은 상단에 있었습니다. 문제는 위치가 아니라 <strong>무게</strong>였습니다.
+      그 아래로 배너 캐러셀, 추천 프롬프트, 인기 템플릿, 기능 소개가 이어졌고,
+      화면에서 가장 크고 눈에 띄는 것은 배너였습니다.
+    </p>
+    <p class="lede">
+      게다가 서비스가 자리를 잡으면서 <strong>이미 사용법을 아는 사용자의 비중이 늘었습니다.</strong>
+      이들에게 배너는 매번 지나쳐야 하는 소음이었고,
+      다른 대화형 AI 서비스와 다른 이 구조 자체에 반감을 표하는 반응이 나오기 시작했습니다.
+    </p>
+  </div>
+
+  <!-- ── 시그니처: 화면 구성 비교 ── -->
+  <div class="stackwrap">
+    <div class="stackcol">
+      <h3>Before — 홈 구성</h3>
+      <div class="stack">
+        <div class="band input">입력창 <span>사용</span></div>
+        <div class="band noise taller">배너 캐러셀 <span>소개</span></div>
+        <div class="band noise tall">추천 프롬프트 <span>소개</span></div>
+        <div class="band noise taller">인기 템플릿 <span>소개</span></div>
+        <div class="band noise tall">기능 소개 <span>소개</span></div>
+      </div>
+      <p class="stack-note">한 화면에서 사용을 위한 영역은 하나, 나머지는 전부 소개를 위한 영역이었습니다.</p>
+    </div>
+
+    <div class="stackcol">
+      <h3>After — 홈 구성</h3>
+      <div class="stack">
+        <div class="band noise">업데이트 소식 <span>소개</span></div>
+        <div class="band input taller">입력창 <span>사용</span></div>
+        <div class="band ghost">소개 콘텐츠 → 사이드바로 이동</div>
+      </div>
+      <p class="stack-note">소개 콘텐츠를 삭제한 것이 아니라, 찾아갈 수 있는 곳으로 옮겼습니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 진단 ═══════════ -->
+<section class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Diagnosis</p>
+    <h2>홈이 두 가지 역할을 겸하고 있었다</h2>
+  </div>
+  <div class="body-col">
+    <p class="lede">
+      처음 온 사람을 설득하는 <strong>랜딩</strong>, 그리고 매일 오는 사람의 <strong>작업 시작점</strong>.
+      방문의 대부분은 후자인데, 화면은 전자에 맞춰져 있었습니다.
+    </p>
+    <p class="lede">
+      두 역할을 한 화면에서 모두 잘 해내는 방법을 찾기보다,
+      <strong>홈의 역할을 하나로 정하고 나머지를 다른 자리로 옮기는 쪽</strong>을 택했습니다.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ 판단 ═══════════ -->
+<section class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Decisions</p>
+    <h2>네 가지 판단</h2>
+  </div>
+
+  <!-- 01 -->
+  <div class="decision">
+    <p class="d-num">01</p>
+    <h3>홈의 역할을 작업 시작점으로 단일화</h3>
+    <div class="body-col">
+      <p>
+        배너 캐러셀, 추천 프롬프트, 인기 템플릿, 기능 소개를 홈에서 걷어냈습니다.
+        다만 삭제가 아니라 이동입니다. 템플릿·스토어·Labs는 사이드바 항목으로 재배치해
+        <strong>필요할 때 찾아갈 수 있는 구조</strong>로 바꿨습니다.
+        업데이트 소식만 단일 배너로 남겨, 공지가 필요한 순간의 창구를 유지했습니다.
+      </p>
+    </div>
+    <figure>
+      <div class="pair">
+        <img src="img/case-home-before.png" alt="개편 전 홈 화면">
+        <img src="img/case-home-after.png" alt="개편 후 홈 화면">
+      </div>
+      <figcaption>입력창을 화면의 중심에 두고, 그 위아래를 비웠습니다.</figcaption>
+    </figure>
+  </div>
+
+  <!-- 02 -->
+  <div class="decision">
+    <p class="d-num">02</p>
+    <h3>상단 가로 메뉴를 좌측 사이드바로 전환</h3>
+    <div class="body-col">
+      <p>
+        기존의 가로 GNB는 항목이 늘어날수록 감당하기 어려운 구조였습니다.
+        에이전트처럼 새 기능이 계속 붙는 제품에서는,
+        <strong>기능이 추가돼도 정보구조를 다시 짜지 않아도 되는 형태</strong>가 필요했습니다.
+        세로 사이드바는 항목 수의 증가를 견디고, 홈에서 걷어낸 소개 콘텐츠를 받아줄 자리이기도 했습니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div class="decision">
+    <p class="d-num">03</p>
+    <h3>모델 선택기를 입력창 안으로</h3>
+    <div class="body-col">
+      <p>
+        기존에는 모델 선택기가 화면 상단에 단독으로 떠 있어,
+        "지금 무엇을 고르는 중인가"가 입력 행위와 분리되어 있었습니다.
+        선택기를 입력창 안으로 옮겨 <strong>모델 선택이 발화의 일부가 되도록</strong> 했습니다.
+        무엇으로 답하게 할지를 쓰기 직전에 결정하는 것이, 여러 모델을 오가는 제품의 실제 사용 방식에 가까웠습니다.
+      </p>
+    </div>
+    <figure>
+      <div class="pair">
+        <img src="img/case-chat-before.png" alt="개편 전 채팅 화면">
+        <img src="img/case-chat-after.png" alt="개편 후 채팅 화면">
+      </div>
+      <figcaption>모델 선택기가 상단에서 입력창 내부로 이동했습니다.</figcaption>
+    </figure>
+  </div>
+
+  <!-- 04 -->
+  <div class="decision">
+    <p class="d-num">04</p>
+    <h3>비운 자리에 신뢰 고지를</h3>
+    <div class="body-col">
+      <p>
+        배너를 걷어낸 자리를 그대로 여백으로 두지 않았습니다.
+        입력창 안내 문구를 데이터 취급에 대한 주의로 바꾸고,
+        입력창 아래에 대화 데이터의 저장·학습 여부와 답변의 법적 효력에 관한 고지를 배치했습니다.
+      </p>
+      <p>
+        공공기관과 지자체가 쓰는 서비스에서 이 정보는 부가 설명이 아니라
+        <strong>사용을 시작하기 전에 확인되어야 하는 조건</strong>입니다.
+        홈을 비운 것이 아니라, 홈이 해야 할 말을 바꾼 것에 가깝습니다.
+      </p>
+    </div>
+
+    <div class="pull">
+      <p class="eyebrow">Principle</p>
+      <p>공간을 비우는 일은 무엇을 지울지가 아니라, 그 자리에 무엇이 와야 하는지를 정하는 일이었습니다.</p>
+      <p class="sub">
+        가장 눈에 띄던 배너가 있던 자리에, 가장 먼저 읽혀야 할 문장을 놓았습니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ 결과 ═══════════ -->
+<section class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Outcome</p>
+    <h2>화면이 아니라 구조가 바뀌었다</h2>
+  </div>
+  <ul class="outcome">
+    <li><p><b>첫 화면의 목적이 하나가 됐습니다.</b> 사용자가 도착해서 처음 하는 행동과 화면이 유도하는 행동이 일치하게 됐습니다.</p></li>
+    <li><p><b>기능 확장을 견디는 내비게이션을 갖췄습니다.</b> 이후 추가된 기능들은 정보구조 변경 없이 사이드바에 편입되었습니다.</p></li>
+    <li><p><b>공공 도입 환경에 필요한 고지를 첫 화면에 확보했습니다.</b> 별도 안내 페이지를 만들지 않고 사용 시작 지점에서 전달됩니다.</p></li>
+  </ul>
+</section>
+
+<!-- ═══════════ 회고 ═══════════ -->
+<section class="wrap closing">
+  <h2>돌아보며</h2>
+  <div class="body-col">
+    <p class="lede">
+      이 개편에서 가장 오래 붙잡았던 질문은 "무엇을 뺄까"가 아니라
+      <strong>"이 화면은 누구의 화면인가"</strong>였습니다.
+      홈에 놓인 것들은 모두 누군가에게 필요한 콘텐츠였고, 그래서 지우는 판단이 쉽지 않았습니다.
+    </p>
+    <p class="lede">
+      기준이 된 것은 방문의 대부분을 차지하는 사용자였습니다.
+      한 화면이 모두를 만족시키려 할 때 실제로는 아무도 만족시키지 못한다는 것을,
+      이 작업을 통해 확인했습니다.
+    </p>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p>© 2026 SEO BO GEUM</p>
+</footer>
+
+</body>
+</html>
