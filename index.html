@@ -382,10 +382,10 @@
 
 <script>
 const projects = [
-  {id:'timely-home-ai',cat:'웹',title:'Timely AI 홈 개편',year:'2024–2026',
+  {id:'timely-home-ai',cat:'웹',title:'Timely AI 홈 개편',year:'2024–2026',ext:'png',
    desc:'배너와 콘텐츠로 채워져 있던 홈을 작업 시작점으로 재설계',
    role:'프로덕트 디자인 단독',tools:'Figma',period:'',contrib:'100%',link:'timely-home-case.html'},
-  {id:'pickme',cat:'브랜딩',title:'온라인 투표 서비스 픽미',year:'2021—2023',
+  {id:'pickme',cat:'브랜딩',title:'온라인 투표 서비스 픽미',year:'2021—2023',ext:'png',
    desc:'코로나19로 대면 투표가 어려운 상황을 해결하기 위해 만들어진 통합 의사결정 플랫폼입니다. 공식 홈페이지·관리자·유권자 페이지를 디자인하며, 누적 투표 유권자 100만 명을 넘는 서비스로 성장하는 과정을 함께했습니다.',
    role:'Logo · UI/UX · Editorial',tools:'Figma · Illustrator · Photoshop',period:'2021.11 — 2023.11',contrib:'10인 팀 (디자인 100%)',link:'https://ohpick.me/'},
   {id:'laplaya',cat:'브랜딩',title:'소녀의 바다, 라플라야',year:'2021',
@@ -415,7 +415,7 @@ const projects = [
   {id:'poster',cat:'에디토리얼',title:'장애인종합생활체육대회 포스터',year:'2018',
    desc:'대구장애인체육회 주최 행사의 포스터·대형 현수막·초대장·팜플렛을 제작했습니다. 행사의 목적이 또렷이 드러나도록 댄스 스포츠를 메인 비주얼로 선정했습니다.',
    role:'Editorial',tools:'Illustrator · Photoshop · InDesign',period:'2018.08 — 2018.09',contrib:'1인 (디자인 100%)',link:''},
-  {id:'mural',cat:'기타',title:'벽화 공모전 특선 · 대구 무형문화재',year:'2017',
+  {id:'mural',cat:'기타',title:'벽화 공모전 특선 · 대구 무형문화재',year:'2017',ext:'png',
    desc:'고산농악과 판소리 춘향전을 일러스트로 표현해 무형문화재의 이야기를 전한 벽화 공모전 출품작으로, 특선을 수상했습니다.',
    role:'Editorial · Illustration',tools:'Illustrator · Photoshop',period:'2017.07 — 2017.08',contrib:'2인 팀 (디자인 100%)',link:''},
   {id:'lotte',cat:'기타',title:'롯데백화점 혼자볼게요 캐릭터',year:'2021',
@@ -434,7 +434,7 @@ function render(cat){
     c.className='card reveal';
     c.style.transitionDelay=(i*40)+'ms';
     c.innerHTML=`
-      <div class="thumb"><img src="img/${p.id}.jpg" alt="${p.title}" loading="lazy"></div>
+      <div class="thumb"><img src="img/${p.id}.${p.ext||'jpg'}" alt="${p.title}" loading="lazy"></div>
       <div class="card-body">
         <div class="card-cat">${p.cat.toUpperCase()}</div>
         <div class="card-title">${p.title}</div>
@@ -458,7 +458,7 @@ document.querySelectorAll('.tab').forEach(t=>{
 // modal
 const modal=document.getElementById('modal');
 function openModal(p){
-  mImg.src='img/'+p.id+'.jpg'; mImg.alt=p.title;
+  mImg.src='img/'+p.id+'.'+(p.ext||'jpg'); mImg.alt=p.title;
   mCat.textContent=p.cat.toUpperCase();
   mTitle.textContent=p.title;
   mDesc.textContent=p.desc;
