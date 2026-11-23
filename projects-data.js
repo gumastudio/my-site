@@ -124,7 +124,7 @@ const projects = [
    desc:'집에만 계시던 아픈 외할아버지를 위해 시작한 텀블벅 펀딩 프로젝트입니다. 뇌를 자극하는 놀이로 어르신과 함께할 수 있는 놀이책을 기획·디자인했습니다.',
    role:'Logo · Character · Editorial',tools:'Illustrator · Photoshop · InDesign',period:'2021.12 — 2022.01',contrib:'2인 팀 (디자인 100%)',link:'https://www.tumblbug.com/silverbook'},
   {id:'laplaya',cat:'BRANDING',title:'소녀의 바다, 라플라야',year:'2021',ext:'png',
-   desc:'어린 시절의 추억에서 영감을 받아 여성 타겟으로 만든 텀블벅 펀딩 브랜드입니다. 청량한 바다 컨셉과 사랑스러운 캐릭터를 중심으로 로고·캐릭터·굿즈·제품 패키지까지 전개했습니다.',
+   desc:'‘소녀의 바다(La Playa)’는 어린 시절 바다의 추억에서 출발한 텀블벅 펀딩 브랜드입니다. 20대 여성을 타깃으로, ‘청량한 바다’라는 하나의 정서를 로고·캐릭터·굿즈·패키지까지 일관되게 풀어내는 것을 목표로 했습니다. 산다라·꿀비·단미 세 캐릭터에 각기 다른 성격을 부여해 브랜드에 이야기를 더했고, 워드마크부터 제품 패키지까지 전 범위의 비주얼을 직접 설계했습니다.',
    role:'Logo · Character · Editorial',tools:'Illustrator · Photoshop',period:'2021.09 — 2021.12',contrib:'2인 팀 (디자인 100%)',link:'https://tumblbug.com/laplaya_summer',
    gallery:['img/laplaya-g1.jpg', ['img/laplaya-g2.jpg','img/laplaya-g3.jpg'], 'img/laplaya-g4.jpg']},
   {id:'lotte',cat:'BRANDING',title:'롯데백화점 혼자볼게요 캐릭터',year:'2021',
