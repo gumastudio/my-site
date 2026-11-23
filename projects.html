@@ -27,103 +27,37 @@
       <h1 class="sec-label">selected work<span class="dot">.</span></h1>
       <a href="index.html" class="pill">← 홈으로</a>
     </div>
-    <p class="sec-intro">카테고리를 눌러 작업을 골라보세요. 카드를 클릭하면 자세한 내용이 열립니다.</p>
+    <p class="sec-intro">카테고리를 눌러 작업을 골라보세요. 카드를 클릭하면 상세 페이지가 열립니다.</p>
 
     <div class="tabs" id="tabs" role="group" aria-label="프로젝트 분류">
       <button class="tab" aria-pressed="true" data-cat="ALL">All</button>
       <button class="tab" aria-pressed="false" data-cat="WEB•APP">Web·App</button>
       <button class="tab" aria-pressed="false" data-cat="BRANDING">Branding</button>
-      <button class="tab" aria-pressed="false" data-cat="DIGITAL CONTENTS">Digital</button>
-      <button class="tab" aria-pressed="false" data-cat="MOTION GRAPHIC">Motion</button>
       <button class="tab" aria-pressed="false" data-cat="EDITORIAL DESIGN">Editorial</button>
+      <button class="tab" aria-pressed="false" data-cat="PROPOSAL">Proposal</button>
     </div>
 
     <div class="work-grid" id="grid"></div>
   </div>
 </section>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-box">
-    <button class="m-close" id="mClose">✕</button>
-    <img class="m-img" id="mImg" src="" alt="" />
-    <div class="m-body">
-      <div class="m-cat" id="mCat"></div>
-      <div class="m-title" id="mTitle"></div>
-      <div class="m-desc" id="mDesc"></div>
-      <div class="m-info">
-        <div><div class="k">Role</div><div class="v" id="mRole"></div></div>
-        <div><div class="k">Tools</div><div class="v" id="mTools"></div></div>
-        <div><div class="k">Period</div><div class="v" id="mPeriod"></div></div>
-        <div><div class="k">Contribution</div><div class="v" id="mContrib"></div></div>
-      </div>
-      <a class="m-link" id="mLink" href="#" target="_blank" rel="noopener">라이브 사이트 보기 →</a>
-    </div>
-  </div>
-</div>
-
+<script src="projects-data.js"></script>
 <script>
-const projects = [
-  {id:'timely-home-ai',cat:'WEB•APP',title:'Timely AI 홈 개편',year:'2024–2026',ext:'png',
-   desc:'배너와 콘텐츠로 채워져 있던 홈을 작업 시작점으로 재설계',
-   role:'프로덕트 디자인 단독',tools:'Figma',period:'',contrib:'100%',link:'timely-home-case.html'},
-  {id:'pickme',cat:'BRANDING',title:'온라인 투표 서비스 픽미',year:'2021—2023',ext:'png',
-   desc:'코로나19로 대면 투표가 어려운 상황을 해결하기 위해 만들어진 통합 의사결정 플랫폼입니다. 공식 홈페이지·관리자·유권자 페이지를 디자인하며, 누적 투표 유권자 100만 명을 넘는 서비스로 성장하는 과정을 함께했습니다.',
-   role:'Logo · UI/UX · Editorial',tools:'Figma · Illustrator · Photoshop',period:'2021.11 — 2023.11',contrib:'10인 팀 (디자인 100%)',link:''},
-  {id:'s-stay',cat:'WEB•APP',title:'‘S’사 고급 숙소 예약 플랫폼',year:'2023',
-   desc:'고급스러운 무드를 핵심으로 한 숙박 예약 플랫폼입니다. 블랙 메인 컬러와 라운딩 레이아웃으로 차별화하고, 공식 홈페이지·숙박업소 관리자·시스템 관리자 3개 페이지를 개발팀과 조율하며 제작했습니다.',
-   role:'UI/UX',tools:'Figma · Illustrator',period:'2023.09 — 2023.11',contrib:'6인 팀 (디자인 100%)',link:''},
-  {id:'rainbird',cat:'WEB•APP',title:'재난 알림 앱 레인버드지오',year:'2023',
-   desc:'인공위성 데이터 기반으로 아시아-태평양 지역의 기후 리스크를 실시간 알려주는 앱의 리디자인입니다. 외부 기획자·iOS/Android 개발자와 협업하며 더 나은 UX를 찾아간 프로젝트입니다.',
-   role:'UI/UX',tools:'Figma · Zeplin · Illustrator',period:'2023.06 — 2023.08',contrib:'4인 팀 (디자인 100%)',link:''},
-  {id:'knu-ebook',cat:'EDITORIAL DESIGN',title:'경북대학교 신입생 안내 전자책',year:'2020—2023',
-   desc:'매년 초 진행한 경북대학교 신입생용 150p 이상 전자 안내 책자입니다. 일러스트·포토샵 작업부터 인디자인 편집, 전자책 변환까지 전 과정을 도맡았습니다.',
-   role:'Editorial',tools:'InDesign · Illustrator',period:'2020.02 — 2023.02',contrib:'1인 (디자인 100%)',link:'https://knupia2.knu.ac.kr/guidebook/#p=1'},
-  {id:'silverbook',cat:'EDITORIAL DESIGN',title:'어르신을 위한 책 월간실버',year:'2021—2022',
-   desc:'집에만 계시던 아픈 외할아버지를 위해 시작한 텀블벅 펀딩 프로젝트입니다. 뇌를 자극하는 놀이로 어르신과 함께할 수 있는 놀이책을 기획·디자인했습니다.',
-   role:'Logo · Character · Editorial',tools:'Illustrator · Photoshop · InDesign',period:'2021.12 — 2022.01',contrib:'2인 팀 (디자인 100%)',link:'https://www.tumblbug.com/silverbook'},
-  {id:'laplaya',cat:'BRANDING',title:'소녀의 바다, 라플라야',year:'2021',
-   desc:'어린 시절의 추억에서 영감을 받아 여성 타겟으로 만든 텀블벅 펀딩 브랜드입니다. 청량한 바다 컨셉과 사랑스러운 캐릭터를 중심으로 로고·캐릭터·굿즈·제품 패키지까지 전개했습니다.',
-   role:'Logo · Character · Editorial',tools:'Illustrator · Photoshop',period:'2021.09 — 2021.12',contrib:'2인 팀 (디자인 100%)',link:''},
-  {id:'lotte',cat:'BRANDING',title:'롯데백화점 혼자볼게요 캐릭터',year:'2021',
-   desc:'혼자 쇼핑하는 ‘혼쇼’ 고객을 위한 굿즈(스티커·가방 걸이) 캐릭터를 의뢰받아 제작했습니다. 귀여운 단발머리 소녀로 친근감을 부여했습니다.',
-   role:'Character Design',tools:'Illustrator',period:'2021.10',contrib:'1인 (디자인 100%)',link:''},
-  {id:'natuur',cat:'WEB•APP',title:'아이스크림 홈페이지 리디자인 나뚜루',year:'2020',
-   desc:'프리미엄 아이스크림 브랜드 나뚜루의 홈페이지 리디자인 개인 프로젝트입니다. 기획·디자인뿐 아니라 HTML/CSS로 직접 퍼블리싱까지 구현한 경험이 있습니다.',
-   role:'UI/UX · Publishing',tools:'Figma · Illustrator · VS Code',period:'2020.09 — 2020.12',contrib:'1인 개인 (100%)',link:''},
-  {id:'wefresh',cat:'WEB•APP',title:'분리수거 앱 리프레시',year:'2019',
-   desc:'올바른 분리배출 방법을 익히도록 돕는 개인 프로젝트입니다. 사용자 인터뷰·리서치를 통해 인사이트를 도출하고, 분리배출 인증으로 성취감을 주는 흐름을 설계했습니다.',
-   role:'Logo · UI/UX',tools:'Illustrator · Photoshop',period:'2019.08 — 2019.12',contrib:'1인 개인 (100%)',link:''},
-  {id:'morningmong',cat:'WEB•APP',title:'알람 앱 모닝몽',year:'2018',
-   desc:'알람 소리만 울리는 기존 앱과 달리, 간단한 게임을 통과해야 알람이 멈추는 알람 앱입니다. ‘모닝몽’ 네이밍에 맞춰 귀여운 원숭이 캐릭터를 직접 만들어 적용했습니다.',
-   role:'Logo · Character · UI/UX',tools:'Illustrator · Photoshop',period:'2018.08 — 2018.11',contrib:'1인 개인 (100%)',link:''},
-  {id:'album',cat:'DIGITAL CONTENTS',title:'앨범 커버 리디자인 비행운',year:'2018',
-   desc:'몽환적인 멜로디와 어릴 적 꿈이던 우주 비행사를 모티프로, 포토샵 콜라주 기법을 활용해 노래 주제가 연상되는 앨범 커버를 제작했습니다.',
-   role:'Graphic Design',tools:'Illustrator · Photoshop',period:'2018.10',contrib:'1인 (디자인 100%)',link:''},
-  {id:'poster',cat:'EDITORIAL DESIGN',title:'장애인종합생활체육대회 포스터',year:'2018',
-   desc:'대구장애인체육회 주최 행사의 포스터·대형 현수막·초대장·팜플렛을 제작했습니다. 행사의 목적이 또렷이 드러나도록 댄스 스포츠를 메인 비주얼로 선정했습니다.',
-   role:'Editorial',tools:'Illustrator · Photoshop · InDesign',period:'2018.08 — 2018.09',contrib:'1인 (디자인 100%)',link:''},
-  {id:'mural',cat:'EDITORIAL DESIGN',title:'벽화 공모전 특선 · 대구 무형문화재',year:'2017',ext:'png',
-   desc:'고산농악과 판소리 춘향전을 일러스트로 표현해 무형문화재의 이야기를 전한 벽화 공모전 출품작으로, 특선을 수상했습니다.',
-   role:'Editorial · Illustration',tools:'Illustrator · Photoshop',period:'2017.07 — 2017.08',contrib:'2인 팀 (디자인 100%)',link:''},
-];
-
-const catLabel={'WEB•APP':'WEB · APP','BRANDING':'BRANDING','DIGITAL CONTENTS':'DIGITAL','MOTION GRAPHIC':'MOTION','EDITORIAL DESIGN':'EDITORIAL'};
 const grid = document.getElementById('grid');
 function render(cat){
   grid.innerHTML='';
   const visible = projects.filter(p => cat === 'ALL' || p.cat === cat);
   if (!visible.length){grid.textContent = '아직 등록된 작업물이 없습니다.';return;}
   visible.forEach((p,i)=>{
-    const c=document.createElement('button');
+    const c=document.createElement('a');
     c.className='work-card reveal';
+    c.href = p.page || ('work.html?id='+p.id);
     c.style.transitionDelay=(i*45)+'ms';
     c.innerHTML=`
       <img src="img/${p.id}.${p.ext||'jpg'}" alt="${p.title}" loading="lazy">
       <span class="work-cat">${catLabel[p.cat]||p.cat}</span>
       <span class="work-title">${p.title}</span>
       <span class="work-year">${p.year}</span>`;
-    c.onclick=()=>openModal(p);
     grid.appendChild(c);
     requestAnimationFrame(()=>requestAnimationFrame(()=>c.classList.add('in')));
   });
@@ -138,29 +72,6 @@ document.querySelectorAll('.tab').forEach(t=>{
   };
 });
 
-// modal
-const modal=document.getElementById('modal');
-function openModal(p){
-  mImg.src='img/'+p.id+'.'+(p.ext||'jpg'); mImg.alt=p.title;
-  mCat.textContent=catLabel[p.cat]||p.cat;
-  mTitle.textContent=p.title;
-  mDesc.textContent=p.desc;
-  mRole.textContent=p.role;
-  mTools.textContent=p.tools;
-  mPeriod.textContent=p.period||'—';
-  mContrib.textContent=p.contrib;
-  const link=document.getElementById('mLink');
-  if(p.link){link.style.display='inline-flex';link.href=p.link;}
-  else{link.style.display='none';}
-  modal.classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeModal(){modal.classList.remove('open');document.body.style.overflow='';}
-document.getElementById('mClose').onclick=closeModal;
-modal.onclick=e=>{if(e.target===modal)closeModal();};
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-
-// nav border on scroll
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
 </script>

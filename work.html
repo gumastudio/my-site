@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>작업 상세 — SEO BO GEUM</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+<link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="brand">서보금 <b>·</b> Portfolio</a>
+  <div class="links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#now">Now</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<main class="wrap case-top" id="main"></main>
+
+<script src="projects-data.js"></script>
+<script>
+const id = new URLSearchParams(location.search).get('id');
+const p = (typeof projects !== 'undefined' ? projects : []).find(x => x.id === id);
+
+if (!p) {
+  location.replace('projects.html');
+} else if (p.page && p.page !== 'work.html') {
+  location.replace(p.page);
+} else {
+  const esc = s => (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const cat = (typeof catLabel !== 'undefined' && catLabel[p.cat]) || p.cat;
+  const hero = `img/${p.id}.${p.ext||'jpg'}`;
+  document.title = p.title + ' — SEO BO GEUM';
+
+  const metaRows = [
+    ['Industry', cat],
+    ['Year', p.year],
+    ['Role', p.role],
+    ['Credit', p.contrib],
+  ].map(([k,v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
+
+  let media;
+  if (p.gallery && p.gallery.length) {
+    media = `<div class="case-media reveal">${p.gallery.map(src=>`<img src="${src}" alt="${esc(p.title)}" loading="lazy">`).join('')}</div>`;
+  } else {
+    media = `<div class="case-media reveal"><div class="case-ph"><span>이미지 준비중</span></div></div>
+      <div class="case-media case-media--2 reveal">
+        <div class="case-ph"><span>이미지 준비중</span></div>
+        <div class="case-ph"><span>이미지 준비중</span></div>
+      </div>`;
+  }
+
+  const livePill = p.link ? `<a class="pill" href="${esc(p.link)}" target="_blank" rel="noopener">바로가기 →</a>` : '';
+
+  document.getElementById('main').innerHTML = `
+    <div class="case-hero reveal">
+      <div class="case-hero-head">
+        <h1>${esc(p.title)}</h1>
+        <div class="case-meta"><dl>${metaRows}</dl></div>
+      </div>
+      <img class="case-hero-img" src="${hero}" alt="${esc(p.title)}" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'case-ph',innerHTML:'<span>이미지 준비중</span>'}))">
+    </div>
+
+    <section class="case-section reveal">
+      <div class="case-head"><h2 class="case-label">about<span class="dot">.</span></h2>${livePill}</div>
+      <div class="case-text"><p>${esc(p.desc)}</p></div>
+    </section>
+
+    ${media}
+
+    <section class="case-section reveal">
+      <div class="case-head"><h2 class="case-label">detail<span class="dot">.</span></h2></div>
+      <div class="case-info">
+        <div><span class="k">Role</span><span class="v">${esc(p.role)}</span></div>
+        <div><span class="k">Tools</span><span class="v">${esc(p.tools)}</span></div>
+        <div><span class="k">Period</span><span class="v">${esc(p.period)||'—'}</span></div>
+        <div><span class="k">Contribution</span><span class="v">${esc(p.contrib)}</span></div>
+      </div>
+    </section>
+
+    <div class="case-foot">
+      <a href="projects.html">← 전체 작업 보기</a>
+      <a href="index.html#contact">함께 일해요 →</a>
+    </div>
+  `;
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}
+
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY>10), {passive:true});
+</script>
+</body>
+</html>
