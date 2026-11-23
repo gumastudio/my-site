@@ -5,54 +5,88 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SEO BO GEUM — Portfolio</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
 <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="brand">SEO BO GEUM <b>·</b> PORTFOLIO</a>
+<nav id="nav">
+  <a href="index.html" class="brand">서보금 <b>·</b> Portfolio</a>
   <div class="links">
-    <a href="#now">NOW</a>
-    <a href="projects.html">WORK</a>
-    <a href="#about">ABOUT</a>
-    <a href="#contact">CONTACT</a>
+    <a href="#work">Work</a>
+    <a href="#now">Now</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <!-- HERO -->
-<header>
-  <div class="hero-grad"></div>
-  <svg class="orbit" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
-    <ellipse cx="980" cy="420" rx="320" ry="430" fill="none" stroke="var(--accent)" stroke-width="1.1" transform="rotate(28 980 420)" opacity=".85"/>
-    <path d="M-50 760 C 350 560, 760 560, 1180 300 C 1360 190, 1480 130, 1560 90" fill="none" stroke="var(--accent)" stroke-width="1.1" opacity=".7"/>
-  </svg>
-  <div class="wrap hero-content">
-    <div class="eyebrow">PORTFOLIO · 2018 — 2026</div>
-    <div class="dot"></div>
-    <h1>
+<header class="hero">
+  <div class="hero-main">
+    <h1 class="display">
       <span class="line"><span>보기 좋게,</span></span>
-      <span class="line"><span>그리고 읽히게</span></span>
+      <span class="line"><span>그리고 읽히게.</span></span>
     </h1>
-    <p class="hero-sub">브랜딩부터 UI/UX·에디토리얼까지, 7년 6개월간
-      한 조직의 디자인 전 범위를 맡아온 디자이너입니다.</p>
-    <div class="tags">
-      <span>BRANDING</span><span>UI / UX</span><span>EDITORIAL</span><span>GRAPHIC</span>
+    <img class="hero-photo" src="img/profile.jpg" alt="서보금 프로필" />
+  </div>
+  <div class="hero-foot">
+    <span class="hero-email">
+      seobogeum97@gmail.com
+      <button class="copy-btn" id="copyEmail" aria-label="이메일 복사" title="이메일 복사">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </span>
+    <p class="hero-intro">브랜딩부터 UI/UX·에디토리얼까지, 7년 6개월간 한 조직의 디자인 전 범위를 맡아온 디자이너입니다.</p>
+  </div>
+</header>
+
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-label">work<span class="dot">.</span></h2>
+      <a href="projects.html" class="pill">전체 보기 →</a>
+    </div>
+    <div class="work-grid">
+      <a class="work-card" href="projects.html">
+        <img src="img/timely-home-ai.png" alt="Timely AI 홈 개편" loading="lazy" />
+        <span class="work-cat">WEB · APP</span>
+        <span class="work-title">Timely AI 홈 개편</span>
+        <span class="work-year">2024–2026</span>
+      </a>
+      <a class="work-card" href="projects.html">
+        <img src="img/pickme.png" alt="온라인 투표 서비스 픽미" loading="lazy" />
+        <span class="work-cat">BRANDING</span>
+        <span class="work-title">온라인 투표 서비스 픽미</span>
+        <span class="work-year">2021–2023</span>
+      </a>
+      <a class="work-card" href="projects.html">
+        <img src="img/s-stay.jpg" alt="‘S’사 고급 숙소 예약 플랫폼" loading="lazy" />
+        <span class="work-cat">WEB · APP</span>
+        <span class="work-title">‘S’사 고급 숙소 예약 플랫폼</span>
+        <span class="work-year">2023</span>
+      </a>
+      <a class="work-card" href="projects.html">
+        <img src="img/rainbird.jpg" alt="재난 알림 앱 레인버드지오" loading="lazy" />
+        <span class="work-cat">WEB · APP</span>
+        <span class="work-title">재난 알림 앱 레인버드지오</span>
+        <span class="work-year">2023</span>
+      </a>
     </div>
   </div>
-  <div class="scroll-cue">SCROLL ↓</div>
-</header>
+</section>
 
 <!-- NOW -->
 <section id="now">
   <div class="wrap">
-    <div class="sec-label">CURRENTLY</div>
-    <h2 class="sec-title">프로덕트 디자이너</h2>
-    <div class="now-role">Timely AI · 2024.04 – 현재</div>
-    <p class="sec-desc">사내 유일 디자이너로, 제품과 브랜드와 협업을 함께 책임집니다.</p>
+    <div class="sec-head">
+      <h2 class="sec-label">now<span class="dot">.</span></h2>
+    </div>
+    <div class="now-top">
+      <div class="now-role">프로덕트 디자이너 · Timely AI</div>
+      <div class="now-when">2024.04 – 현재</div>
+    </div>
+    <p class="now-desc">사내 유일 디자이너로, 제품과 브랜드와 협업을 함께 책임집니다.</p>
     <div class="now-groups">
       <div class="now-group">
         <div class="now-group-label">제품</div>
@@ -99,57 +133,87 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="wrap about-grid">
-    <div>
-      <img class="pf" src="img/profile.jpg" alt="서보금 프로필" />
-      <div class="about-name">서보금</div>
-      <div class="about-meta">
-        Daegu, KR<br>
-        seobogeum97@gmail.com
-      </div>
-      <div class="tools">
-        <div class="tools-row"><span class="tools-cat">Design</span><span>Figma</span><span>Photoshop</span><span>Illustrator</span><span>InDesign</span></div>
-        <div class="tools-row"><span class="tools-cat">Motion</span><span>Premiere Pro</span><span>After Effects</span></div>
-        <div class="tools-row"><span class="tools-cat">AI Workflow</span><span>Claude</span><span>Figma MCP</span></div>
-        <div class="tools-row"><span class="tools-cat">Collaboration</span><span>Notion</span><span>Slack</span><span>Jira</span></div>
-      </div>
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-label">about<span class="dot">.</span></h2>
     </div>
-    <div>
-      <div class="sec-label">ABOUT</div>
+    <div class="about-grid">
       <div class="about-text">
-        <p>한 조직의 디자인을 통째로 책임지는 방식으로 7년 6개월을 일해 왔습니다. 브랜딩, UI/UX, 에디토리얼, 그래픽을 넘나들며 기획부터 디자인, 퍼블리싱·배포까지 직접 수행했고, 반복되는 일은 매번 시스템으로 남겨 다음 사람이 같은 고민을 반복하지 않게 만드는 것을 원칙으로 삼습니다.</p>
-        <p>디자이너로서 저의 목표는 <span class="hl">누구에게나 영감을 주고 싶은 결과물을 만드는 것</span>입니다. 브랜딩, UI/UX, 에디토리얼, 그래픽까지 폭넓게 다루며 기획부터 디자인, 때로는 퍼블리싱·배포까지 직접 경험해 왔습니다.</p>
+        <p>한 조직의 디자인을 통째로 책임지는 방식으로 7년 6개월을 일해 왔습니다. 브랜딩, UI/UX, 에디토리얼, 그래픽을 넘나들며 기획부터 디자인, 퍼블리싱·배포까지 직접 수행했고, 반복되는 일은 매번 <span class="hl">시스템으로 남겨</span> 다음 사람이 같은 고민을 반복하지 않게 만드는 것을 원칙으로 삼습니다.</p>
+        <p>디자이너로서 저의 목표는 <span class="hl">누구에게나 영감을 주는 결과물</span>을 만드는 것입니다.</p>
       </div>
-      <div class="exp">
-        <div class="exp-row"><span>타임리 · 프로덕트 디자이너</span><span>2024.04 — 재직중</span></div>
-        <div class="exp-row"><span>퀘스 홍보 디자인팀 · 팀원</span><span>2020.03 — 2023.12</span></div>
-        <div class="exp-row"><span>SBS아카데미 웹디자이너 과정 수료</span><span>2019.06 — 2019.12</span></div>
-        <div class="exp-row"><span>이레디자인시스템 옥외광고 홍보 디자이너</span><span>2018.03 — 2019.05</span></div>
+      <div class="about-side">
+        <div class="about-profile">
+          <img class="pf" src="img/profile.jpg" alt="서보금 프로필" />
+          <div>
+            <div class="about-name">서보금</div>
+            <div class="about-meta">Daegu, KR<br>seobogeum97@gmail.com</div>
+          </div>
+        </div>
+        <div class="about-block">
+          <h4>Experience</h4>
+          <div class="exp-row"><span>타임리 · 프로덕트 디자이너</span><span>2024.04 — 재직중</span></div>
+          <div class="exp-row"><span>퀘스 홍보 디자인팀 · 팀원</span><span>2020.03 — 2023.12</span></div>
+          <div class="exp-row"><span>SBS아카데미 웹디자이너 과정</span><span>2019.06 — 2019.12</span></div>
+          <div class="exp-row"><span>이레디자인시스템 옥외광고 디자이너</span><span>2018.03 — 2019.05</span></div>
+        </div>
+        <div class="about-block">
+          <h4>Tools</h4>
+          <div class="tools">
+            <div class="tools-row"><span class="tools-cat">Design</span><span class="tg">Figma</span><span class="tg">Photoshop</span><span class="tg">Illustrator</span><span class="tg">InDesign</span></div>
+            <div class="tools-row"><span class="tools-cat">Motion</span><span class="tg">Premiere Pro</span><span class="tg">After Effects</span></div>
+            <div class="tools-row"><span class="tools-cat">AI Workflow</span><span class="tg">Claude</span><span class="tg">Figma MCP</span></div>
+            <div class="tools-row"><span class="tools-cat">Collab</span><span class="tg">Notion</span><span class="tg">Slack</span><span class="tg">Jira</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<div class="contact wrap" id="contact">
-  <div class="sec-label" style="text-align:center">GET IN TOUCH</div>
-  <div class="big">함께 일해요.</div>
-  <a class="mail" href="mailto:seobogeum97@gmail.com">seobogeum97@gmail.com</a>
-</div>
-
-<footer class="wrap">
-  <span>© 2026 SEO BO GEUM</span>
-  <div class="footer-right">
-    <span>DESIGNED &amp; BUILT BY BGU</span>
-    <span class="footer-note">이 포트폴리오는 AI 협업으로 직접 설계·구현하고 배포했습니다.</span>
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-social">
+      <a href="mailto:seobogeum97@gmail.com">Email</a>
+    </div>
+    <div class="contact-big">함께 <span class="g">무언가</span> 만들어 볼까요?</div>
+    <div class="contact-cta">
+      <a class="btn-light" href="mailto:seobogeum97@gmail.com">연락하기 →</a>
+      <span class="avail"><span class="d"></span>새로운 협업 열려 있어요</span>
+    </div>
+    <div class="contact-foot">
+      <div>
+        Daegu, KR<br>
+        seobogeum97@gmail.com
+      </div>
+      <div class="r">
+        Designed &amp; Built by BGU<br>
+        © 2026 SEO BO GEUM · AI 협업으로 직접 설계·구현
+      </div>
+    </div>
   </div>
-</footer>
+</section>
 
 <script>
-if (location.hash === "#work") location.replace("projects.html");
+if (location.hash === "#work-page") location.replace("projects.html");
+
+// nav border on scroll
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
+
+// copy email
+const cb=document.getElementById('copyEmail');
+cb&&cb.addEventListener('click',async()=>{
+  try{await navigator.clipboard.writeText('seobogeum97@gmail.com');
+    cb.classList.add('done');cb.setAttribute('title','복사됨!');
+    setTimeout(()=>{cb.classList.remove('done');cb.setAttribute('title','이메일 복사');},1400);
+  }catch(e){}
+});
+
 // reveal on scroll
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.12});
-document.querySelectorAll('section .sec-label,.sec-title,.sec-desc,.about-grid').forEach(el=>{el.classList.add('reveal');io.observe(el);});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+document.querySelectorAll('.sec-head,.work-card,.now-top,.now-groups,.about-grid,.contact-big,.contact-cta').forEach(el=>{el.classList.add('reveal');io.observe(el);});
 </script>
 </body>
 </html>
