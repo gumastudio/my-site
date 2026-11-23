@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>플루비 울피아 제품 카탈로그 — SEO BO GEUM</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+<link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="brand">서보금 <b>·</b> Portfolio</a>
+  <div class="links">
+    <a href="index.html#work">Work</a>
+    <a href="index.html#now">Now</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</nav>
+
+<main class="wrap case-top">
+  <!-- HERO -->
+  <div class="case-hero reveal">
+    <div class="case-hero-head">
+      <h1>플루비 울피아<br>제품 카탈로그</h1>
+      <div class="case-meta">
+        <dl>
+          <dt>Industry</dt><dd>Editorial · Print</dd>
+          <dt>Client</dt><dd>주식회사 플루비</dd>
+          <dt>Year</dt><dd>2026</dd>
+          <dt>Role</dt><dd>편집디자인 · 인포그래픽</dd>
+          <dt>Credit</dt><dd>디자인 · 인쇄 발주 전담</dd>
+        </dl>
+      </div>
+    </div>
+    <img class="case-hero-img" src="img/pluvi.png" alt="플루비 울피아 카탈로그" />
+  </div>
+
+  <!-- ABOUT -->
+  <section class="case-section reveal">
+    <div class="case-head"><h2 class="case-label">about<span class="dot">.</span></h2></div>
+    <div class="case-text">
+      <p>식물성 단백 소재 ‘울피아(Wolffia)’를 만드는 플루비의 B2B 홍보물입니다. 거래처가 제품을 한눈에 파악할 수 있도록 <b>2단 접지 리플릿</b>과 <b>8페이지 중철 제본 책자</b> 두 종으로 편집·디자인했습니다. 원료의 특성과 공급 형태, 품질·안전 정보, 생산 기반과 제품·거래 정보를 일관된 흐름으로 지면에 정리했습니다.</p>
+      <p>작은 수생식물이라는 낯선 소재를 신뢰감 있게 전달하기 위해, 그린 톤의 일관된 비주얼과 단계별 정보 구조로 ‘원료에서 식품까지’ 이어지는 지면을 디자인했습니다.</p>
+    </div>
+  </section>
+
+  <div class="case-media reveal">
+    <img src="img/pluvi-spread1.webp" alt="울피아 재배·가공 과정 지면" loading="lazy" />
+    <img src="img/pluvi-spread2.webp" alt="울피아 활용·영양 정보 지면" loading="lazy" />
+  </div>
+
+  <!-- APPROACH -->
+  <section class="case-section reveal">
+    <div class="case-head"><h2 class="case-label">approach<span class="dot">.</span></h2></div>
+    <div class="case-text">
+      <p>표지·내지·백커버 편집디자인부터 인포그래픽·아이콘 구성, 제품·재배 이미지 배치까지 지면 전체를 디자인했습니다. 원료에서 식품 소재까지 이어지는 가공 단계를 한 흐름으로 시각화해, 복잡한 정보도 쉽게 읽히도록 정리했습니다.</p>
+      <p>구마스튜디오(개인 사업자)로 고객사를 직접 수주해 진행한 프로젝트입니다. 편집디자인과 인포그래픽을 맡았고, 2종 인쇄물 모두 <b>인쇄 발주부터 최종 인쇄용 PDF·편집 원본 납품까지</b> 직접 처리했습니다.</p>
+    </div>
+  </section>
+
+  <div class="case-media case-media--2 reveal">
+    <img src="img/pluvi.png" alt="카탈로그 표지" loading="lazy" />
+    <img src="img/pluvi-spread1.webp" alt="카탈로그 내지" loading="lazy" />
+  </div>
+
+  <!-- FOOT -->
+  <div class="case-foot">
+    <a href="projects.html">← 전체 작업 보기</a>
+    <a href="index.html#contact">함께 일해요 →</a>
+  </div>
+</main>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
