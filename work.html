@@ -55,7 +55,10 @@ if (!p) {
 
   let media;
   if (p.gallery && p.gallery.length) {
-    media = `<div class="case-media reveal">${p.gallery.map(src=>`<img src="${src}" alt="${esc(p.title)}" loading="lazy">`).join('')}</div>`;
+    media = p.gallery.map(item => Array.isArray(item)
+      ? `<div class="case-media case-media--2 reveal">${item.map(src=>`<img src="${src}" alt="${esc(p.title)}" loading="lazy">`).join('')}</div>`
+      : `<div class="case-media reveal"><img src="${item}" alt="${esc(p.title)}" loading="lazy"></div>`
+    ).join('');
   } else {
     media = `<div class="case-media reveal"><div class="case-ph"><span>이미지 준비중</span></div></div>
       <div class="case-media case-media--2 reveal">
