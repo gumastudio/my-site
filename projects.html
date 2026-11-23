@@ -51,7 +51,9 @@ function render(cat){
   visible.forEach((p,i)=>{
     const c=document.createElement('a');
     c.className='work-card reveal';
-    c.href = p.page || ('work.html?id='+p.id);
+    let href = p.page || ('work.html?id='+encodeURIComponent(p.id));
+    if(cat && cat!=='ALL') href += (href.includes('?')?'&':'?')+'cat='+encodeURIComponent(cat);
+    c.href = href;
     c.style.transitionDelay=(i*45)+'ms';
     c.innerHTML=`
       <img src="img/${p.id}.${p.ext||'jpg'}" alt="${p.title}" loading="lazy">
@@ -62,7 +64,10 @@ function render(cat){
     requestAnimationFrame(()=>requestAnimationFrame(()=>c.classList.add('in')));
   });
 }
-render('ALL');
+const initCat = new URLSearchParams(location.search).get('cat') || 'ALL';
+const initTab = [...document.querySelectorAll('.tab')].find(t=>t.dataset.cat===initCat) || document.querySelector('.tab[data-cat="ALL"]');
+document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-pressed', t===initTab ? 'true' : 'false'));
+render(initTab.dataset.cat);
 
 document.querySelectorAll('.tab').forEach(t=>{
   t.onclick=()=>{

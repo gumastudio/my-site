@@ -209,6 +209,8 @@
 
   /* CASE DETAIL PAGE */
   .case-top{padding-top:clamp(108px,15vh,150px);padding-bottom:clamp(60px,10vh,110px)}
+  .case-back{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--muted-2);margin-bottom:clamp(20px,4vh,38px);transition:color .2s}
+  .case-back:hover{color:var(--ink)}
   .case-meta{display:flex;justify-content:flex-end}
   .case-meta dl{display:grid;grid-template-columns:auto auto;gap:9px 18px;font-size:13px;margin:0}
   .case-meta dt{color:var(--muted);text-transform:uppercase;letter-spacing:.07em}

@@ -20,7 +20,10 @@
   </div>
 </nav>
 
-<main class="wrap case-top" id="main"></main>
+<main class="wrap case-top">
+  <a href="projects.html" class="case-back" id="backBtn">← 뒤로</a>
+  <div id="main"></div>
+</main>
 
 <script src="projects-data.js"></script>
 <script>
@@ -95,6 +98,12 @@ if (!p) {
 
 const nav = document.getElementById('nav');
 addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY>10), {passive:true});
+const backBtn = document.getElementById('backBtn');
+backBtn && backBtn.addEventListener('click', e => {
+  const c = new URLSearchParams(location.search).get('cat');
+  if(c){ e.preventDefault(); location.href = 'projects.html?cat=' + encodeURIComponent(c); }
+  else if(history.length>1){ e.preventDefault(); history.back(); }
+});
 </script>
 </body>
 </html>
