@@ -99,7 +99,8 @@
   .sec-intro{max-width:560px;color:var(--muted-2);font-size:clamp(15px,1.3vw,17px);margin-bottom:36px;margin-top:-28px}
 
   /* WORK CARDS (overlay) */
-  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,1.4vw,18px)}
+  .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.4vw,18px)}
+  @media(max-width:900px){.work-grid{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:620px){.work-grid{grid-template-columns:1fr}}
   .work-grid--featured{grid-template-columns:repeat(3,1fr)}
   @media(max-width:900px){.work-grid--featured{grid-template-columns:repeat(2,1fr)}}
